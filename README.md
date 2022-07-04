@@ -13,7 +13,7 @@ Description  -
 
 The Project simulates an Online Casino Game , The graphical user interface was developed on Visual Studio SSRS. 
 
-Inside the SSRS GUI you can Register to the Game and operate as logged in user or logged out,
+Inside the SSRS GUI you can Register to the Game and operate as logged in user or logged out user,
 
 You can manage your own account bankroll and take actions like Deposit or Withdraw , 
 
