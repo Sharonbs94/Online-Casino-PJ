@@ -9,7 +9,7 @@ A Project on SSRS that's simulates an Online Casino Games
 
 
 
-Descreption - 
+Description  - 
 
 The Project simulates an Online Casino Game , The graphical user interface was developed on Visual Studio SSRS. 
 
