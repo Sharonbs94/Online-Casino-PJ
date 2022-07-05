@@ -12,7 +12,7 @@ DECLARE @Status VARCHAR(100) , @LogINTime DATETIME , @IsBlocked VARCHAR(100) , @
 	IF (@PlayerID IN (SELECT [PlayerID]				
 				FROM [dbo].[PlayerDetails])
 					AND @Pass IN (SELECT [Password]
-																					FROM [dbo].[PlayerDetails]))
+						            FROM [dbo].[PlayerDetails]))
 	BEGIN
 		SET @Status = 'Connected'
 		SET @LogINTime = GETUTCDATE()
@@ -31,7 +31,7 @@ DECLARE @Status VARCHAR(100) , @LogINTime DATETIME , @IsBlocked VARCHAR(100) , @
 		IF (@PlayerID IN (SELECT [PlayerID]				
 				  	FROM [dbo].[PlayerDetails])
 						AND @Pass NOT IN (SELECT [Password]
-																					FROM [dbo].[PlayerDetails]))
+								  	FROM [dbo].[PlayerDetails]))
 	BEGIN
 		SET @Status = 'Disconnected'
 		SET @LogINTime = 0000-00-00
