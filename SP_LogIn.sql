@@ -10,8 +10,8 @@ BEGIN
 DECLARE @Status VARCHAR(100) , @LogINTime DATETIME , @IsBlocked VARCHAR(100) , @Count int
 	
 	IF (@PlayerID IN (SELECT [PlayerID]				
-										FROM [dbo].[PlayerDetails])
-														AND @Pass IN (SELECT [Password]
+				FROM [dbo].[PlayerDetails])
+					AND @Pass IN (SELECT [Password]
 																					FROM [dbo].[PlayerDetails]))
 	BEGIN
 		SET @Status = 'Connected'
@@ -22,15 +22,15 @@ DECLARE @Status VARCHAR(100) , @LogINTime DATETIME , @IsBlocked VARCHAR(100) , @
 					INSERT INTO Log (PlayerID , LogStatus , LogInTime , Blocked , NumberofFailedlogintries)
 	   				VALUES (@PlayerID , @STATUS , @LogINTime , @IsBlocked , @Count )
 				ELSE
-					UPDATE Log  SET [NumberofFailedlogintries] = @Count WHERE PlayerID = @PlayerID
-				    UPDATE Log
+			  		UPDATE Log  SET [NumberofFailedlogintries] = @Count WHERE PlayerID = @PlayerID
+					UPDATE Log
 						SET [PlayerID] = @PlayerID , LogStatus = @STATUS , LogInTime = @LogINTime , Blocked = @IsBlocked
 						WHERE @PlayerID IN (SELECT PlayerID FROM [dbo].[Log])
 	END
 
 		IF (@PlayerID IN (SELECT [PlayerID]				
-										FROM [dbo].[PlayerDetails])
-														AND @Pass NOT IN (SELECT [Password]
+				  	FROM [dbo].[PlayerDetails])
+						AND @Pass NOT IN (SELECT [Password]
 																					FROM [dbo].[PlayerDetails]))
 	BEGIN
 		SET @Status = 'Disconnected'
@@ -43,7 +43,7 @@ DECLARE @Status VARCHAR(100) , @LogINTime DATETIME , @IsBlocked VARCHAR(100) , @
 	   				VALUES (@PlayerID , @STATUS , @LogINTime , @IsBlocked , @Count)
 				ELSE
 					UPDATE Log  SET [NumberofFailedlogintries] += @Count WHERE PlayerID = @PlayerID
-				    UPDATE Log
+					UPDATE Log
 						SET [PlayerID] = @PlayerID , LogStatus = @STATUS , LogInTime = @LogINTime , Blocked = @IsBlocked
 						WHERE @PlayerID IN (SELECT [PlayerID] FROM [dbo].[Log])
 
